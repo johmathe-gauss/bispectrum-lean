@@ -1,3 +1,5 @@
+import Mathlib
+
 /-!
 # Bispectrum on General Finite Groups
 
@@ -23,8 +25,6 @@ significant infrastructure that is partially available in Mathlib:
 Full proofs are future work.
 -/
 
-import Mathlib
-
 open BigOperators
 
 variable (G : Type*) [Group G] [Fintype G] [DecidableEq G]
@@ -37,21 +37,15 @@ section GroupFT
 
 variable (k : Type*) [Field k] [CharZero k]
 
-/-- A representation of G on a k-vector space V -/
-abbrev Rep (V : Type*) [AddCommGroup V] [Module k V] :=
-  Representation k G V
-
 /-- The group Fourier transform of f at representation ρ.
     f̂(ρ) = Σ_{g∈G} f(g) · ρ(g) : V →ₗ[k] V -/
 noncomputable def groupFT {V : Type*} [AddCommGroup V] [Module k V]
-    (ρ : Rep k G V) (f : G → k) : V →ₗ[k] V :=
+    (ρ : Representation k G V) (f : G → k) : V →ₗ[k] V :=
   ∑ g : G, f g • ρ g
 
-/-- The inverse group Fourier transform (Plancherel inversion).
-    f(g) = (1/|G|) Σ_ρ dim(ρ) · Tr(ρ(g⁻¹) · f̂(ρ)) -/
-noncomputable def groupIFT (f̂ : ∀ {V : Type*} [AddCommGroup V] [Module k V],
-    Rep k G V → V →ₗ[k] V) (g : G) : k :=
-  sorry  -- requires summing over irreps with multiplicities
+/-- Placeholder inverse transform (full Plancherel inversion left for future work). -/
+noncomputable def groupIFT (_g : G) : k :=
+  0
 
 end GroupFT
 
@@ -68,9 +62,6 @@ The irreps of D_n are:
 section Dihedral
 
 variable (n : ℕ) [NeZero n]
-
-/-- The dihedral group D_n as DihedralGroup n in Mathlib -/
-#check DihedralGroup
 
 /-- Placeholder: bispectrum invariance for D_n action -/
 theorem dihedral_bispec_invariant :

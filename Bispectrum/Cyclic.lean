@@ -1,3 +1,5 @@
+import Bispectrum.DFT
+
 /-!
 # Bispectrum on the Cyclic Group C_n
 
@@ -21,8 +23,6 @@ The three phase factors from the shift cancel exactly:
 
 This works because k₁ + k₂ - (k₁+k₂) = 0 in ℤ/nℤ.
 -/
-
-import Bispectrum.DFT
 
 open Complex BigOperators Real
 

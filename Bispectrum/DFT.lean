@@ -1,3 +1,5 @@
+import Mathlib
+
 /-!
 # Discrete Fourier Transform on ZMod n
 
@@ -14,8 +16,6 @@ coefficient `k` by the phase `ω^(g·k)`.
 
 - `dft_cycShift` : DFT conjugates cyclic shifts to phase multiplication
 -/
-
-import Mathlib
 
 open Complex BigOperators Real
 
@@ -56,7 +56,7 @@ lemma dft_cycShift (f : ZMod n → ℂ) (g k : ZMod n) :
   simp only [dft, cycShift, shiftPhase]
   -- Reindex: substitute x ↦ x + g
   rw [← Equiv.sum_comp (Equiv.addRight g)]
-  simp only [Equiv.addRight_apply]
+  simp
   -- Now we have Σ_x f(x) · exp(-2πi(x+g)k/n)
   -- = exp(-2πi·g·k/n) · Σ_x f(x) · exp(-2πi·x·k/n)
   sorry  -- Phase arithmetic: val(x+g) ≡ val(x) + val(g) mod n
