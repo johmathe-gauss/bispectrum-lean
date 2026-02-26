@@ -1,0 +1,9 @@
+# Lean build/cache artifacts
+.lake/
+
+# Local credentials (never commit)
+.credentials/
+
+# Optional editor/OS noise
+*.swp
+.DS_Store
