@@ -44,7 +44,7 @@ noncomputable def groupFT {V : Type*} [AddCommGroup V] [Module k V]
   ∑ g : G, f g • ρ g
 
 /-- Placeholder inverse transform (full Plancherel inversion left for future work). -/
-noncomputable def groupIFT (g : G) : k :=
+noncomputable def groupIFT (_g : G) : k :=
   0
 
 end GroupFT
