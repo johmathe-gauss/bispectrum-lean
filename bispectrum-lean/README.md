@@ -22,11 +22,13 @@ are in the same $G$-orbit.
 
 | Theorem | Group | Status |
 |---------|-------|--------|
-| DFT shift lemma | $\mathbb{Z}/n$ | `sorry` stub |
+| DFT shift lemma (`dft_cycShift`) | $\mathbb{Z}/n$ | `sorry` stub |
+| Conjugate/negative shift lemma (`dft_cycShift_neg`) | $\mathbb{Z}/n$ | `sorry` stub |
 | $C_n$ bispectrum invariance | $C_n$ | `sorry` stub |
 | $C_n$ bispectrum completeness | $C_n$ | `sorry` stub |
-| $D_n$ bispectrum invariance | $D_n$ | planned |
-| General finite group invariance | finite $G$ | planned |
+| Finite-group Fourier equivariance | finite $G$ | `sorry` stub |
+| $D_n$ bispectrum invariance | $D_n$ | placeholder theorem |
+| General finite group invariance | finite $G$ | placeholder theorem |
 
 ## Repository structure
 
@@ -35,10 +37,12 @@ bispectrum-lean/
 ├── lean-toolchain          # Pins Lean 4 version
 ├── lakefile.toml           # Lake build config (Mathlib dependency)
 ├── Bispectrum.lean         # Root module
+├── scripts/
+│   └── sorry_count.sh      # Count `sorry` occurrences in project files
 └── Bispectrum/
-    ├── DFT.lean            # DFT on ZMod n, cyclic shift lemma
-    ├── Cyclic.lean         # C_n bispectrum + invariance theorem
-    └── FiniteGroup.lean    # General finite group (stubs + framework)
+    ├── DFT.lean            # DFT on ZMod n, cyclic shift lemmas
+    ├── Cyclic.lean         # C_n bispectrum + invariance/completeness stubs
+    └── FiniteGroup.lean    # General finite-group framework + stubs
 ```
 
 ## Getting started (Ubuntu 24.04)
@@ -82,6 +86,11 @@ M-x package-install RET lean4-mode RET
 **CLI only** (check proofs without an editor):
 ```bash
 lake build 2>&1 | grep -E "error|warning|sorry"
+```
+
+Count remaining `sorry` placeholders in this repo:
+```bash
+./scripts/sorry_count.sh
 ```
 
 ### 4. Learning Lean 4
